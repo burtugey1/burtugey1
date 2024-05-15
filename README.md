@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @burtugey1
 - 👀 I’m interested in ML
 - 🌱 I’m currently learning Python
-- 💞️ I’m looking to collaborate on ...
+- 💞️ I’m looking to collaborate on Somali language LLM
 - 📫 How to reach me @burtugey
 
 
