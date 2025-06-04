@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+data/bookkeeping.db
+data/uploads/

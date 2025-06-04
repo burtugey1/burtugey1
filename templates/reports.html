@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <title>Raportit</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Tuloslaskelma</h1>
+  <table>
+    {% for name, total in income.items() %}
+    <tr><td>{{ name }}</td><td>{{ '%.2f' % total }}</td></tr>
+    {% endfor %}
+  </table>
+
+  <h1>Tase</h1>
+  <table>
+    {% for name, total in balance.items() %}
+    <tr><td>{{ name }}</td><td>{{ '%.2f' % total }}</td></tr>
+    {% endfor %}
+  </table>
+
+  <p><a href="/">Takaisin</a></p>
+</body>
+</html>

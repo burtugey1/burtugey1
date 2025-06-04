@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <title>Kirjanpito Demo</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Kirjanpito Demo</h1>
+  <h2>Lataa tosite</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Lataa</button>
+  </form>
+
+  <h2>Lataa pankkirivit</h2>
+  <form action="/bank_upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Lataa CSV</button>
+  </form>
+
+  <h2>Tositteet</h2>
+  <ul>
+    {% for r in receipts %}
+    <li>{{ r.filename }} - <pre>{{ r.text[:100] }}...</pre></li>
+    {% endfor %}
+  </ul>
+
+  <h2>Pankkirivit</h2>
+  <ul>
+    {% for b in bank_rows %}
+    <li>{{ b.date }} {{ b.description }} {{ b.amount }}
+      {% if not b.matched_receipt_id %}
+        - Yhdistä tosite:
+        {% for r in receipts %}
+          <a href="/match/{{ b.id }}/{{ r.id }}">{{ r.filename }}</a>
+        {% endfor %}
+      {% else %}
+        - Yhdistetty: {{ b.matched_receipt.filename }}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="/reports">Raportit</a></p>
+  <p><a href="/export.csv">Vie CSV</a></p>
+</body>
+</html>
